@@ -16,6 +16,7 @@
         <td><%= render "relationships/btn", user: user, options: { class: "follow-link" } %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= user.book_comments.count %> コメント</td>
+        <%# <td><p class="mr-3">総閲覧数:<%= @total_views %><!--</p></td> -->
       </tr>
     <% end %>
   </tbody>
