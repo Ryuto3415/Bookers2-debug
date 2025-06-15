@@ -1,3 +1,36 @@
 // Place all the styles related to the books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+// カードのタイトル・本文・ユーザー名で長文がはみ出さないように
+.card-title,
+.card-text,
+.card-body strong {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+// ホバー時の演出：カードが少し拡大し影が強調される
+.card:hover {
+  transform: scale(1.01);
+  transition: 0.2s ease;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+// 本文エリアの折り返しを強化
+.card-body {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+// カード全体が画面からはみ出さないように調整
+.card {
+  min-width: 0;
+  max-width: 100%;
+}
+
+// 画像が大きすぎてはみ出さないように
+img {
+  max-width: 100%;
+  height: auto;
+}

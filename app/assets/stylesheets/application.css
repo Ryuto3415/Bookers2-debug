@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+
+html, body {
+  width: 100%;
+}
+
+.card-text {
+  /* overflow-x: hidden; */
+  word-break: break-word;
+  overflow-wrap: break-word;
+}

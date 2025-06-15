@@ -1,36 +1,32 @@
-<div class="container my-4 px-2 px-sm-4">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    <% books.each do |book| %>
-      <div class="col">
-        <div class="card h-100 shadow-sm bg-light">
-          <div class="card-body">
-            <div class="d-flex align-items-center mb-3">
-              <%= link_to(book.user) do %>
-                <%= image_tag book.user.get_profile_image, size: '50x50', class: "rounded-circle me-2", alt: "#{book.user.name}のプロフィール画像" %>
-              <% end %>
-              <strong><%= book.user.name %></strong>
-            </div>
-
-            <h5 class="card-title">
-              <%= link_to book.title, book, class: "text-decoration-none" %>
-            </h5>
-
-            <p class="card-text"><%= truncate(book.body, length: 10) %></p>
-
-            <p class="text-muted small">
-              投稿日: <%= book.created_at.strftime("%Y年%m月%d日 %H:%M") %>
-            </p>
-          </div>
-
-          <div class="card-footer d-flex justify-content-between align-items-center small text-muted gap-3">
-            <div id="favorite_btn_<%= book.id %>">
-              <%= render "favorites/btn", book: book %>
-            </div>
-            <div>💬 <%= book.book_comments.count %></div>
-            <div>👁️ <%= book.impressionist_count %></div>
-          </div>
+<% books.each do |book| %>
+  <div class="col-12 col-md-6 col-lg-4 mb-4">
+    <div class="card h-100 shadow-sm bg-light overflow-hidden">
+      <div class="card-body">
+        <div class="d-flex align-items-center mb-3">
+          <%= link_to(book.user) do %>
+            <%= image_tag book.user.get_profile_image, class: "rounded-circle me-2 img-fluid", style: "max-width: 50px; height: auto;", alt: "#{book.user.name}のプロフィール画像" %>
+          <% end %>
+          <strong><%= book.user.name %></strong>
         </div>
+
+        <h5 class="card-title">
+          <%= link_to book.title, book, class: "text-decoration-none" %>
+        </h5>
+
+        <p class="card-text"><%= truncate(book.body, length: 10, omission: '...') %></p>
+
+        <p class="text-muted small">
+          投稿日: <%= book.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+        </p>
       </div>
-    <% end %>
+
+      <div class="card-footer d-flex justify-content-between align-items-center small text-muted gap-3 py-2">
+        <div id="favorite_btn_<%= book.id %>">
+          <%= render "favorites/btn", book: book %>
+        </div>
+        <div>💬 <%= book.book_comments.count %></div>
+        <div>👁️ <%= book.impressionist_count %></div>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>
