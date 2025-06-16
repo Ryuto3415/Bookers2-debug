@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all.order(created_at: :desc)
+    @books = Book.all.order(created_at: :desc).page(params[:page]).per(6)
     @book = Book.new
   end
 
